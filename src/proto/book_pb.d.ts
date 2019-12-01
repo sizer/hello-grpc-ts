@@ -58,6 +58,9 @@ export class Book extends jspb.Message {
     getAuthor(): string;
     setAuthor(value: string): void;
 
+    getPrice(): number;
+    setPrice(value: number): void;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Book.AsObject;
@@ -73,5 +76,6 @@ export namespace Book {
     export type AsObject = {
         title: string,
         author: string,
+        price: number,
     }
 }

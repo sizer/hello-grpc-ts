@@ -363,7 +363,8 @@ proto.Book.prototype.toObject = function(opt_includeInstance) {
 proto.Book.toObject = function(includeInstance, msg) {
   var f, obj = {
     title: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    author: jspb.Message.getFieldWithDefault(msg, 2, "")
+    author: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    price: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -408,6 +409,10 @@ proto.Book.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {string} */ (reader.readString());
       msg.setAuthor(value);
       break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setPrice(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -451,6 +456,13 @@ proto.Book.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getPrice();
+  if (f !== 0) {
+    writer.writeInt32(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -481,6 +493,21 @@ proto.Book.prototype.getAuthor = function() {
 /** @param {string} value */
 proto.Book.prototype.setAuthor = function(value) {
   jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional int32 price = 3;
+ * @return {number}
+ */
+proto.Book.prototype.getPrice = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/** @param {number} value */
+proto.Book.prototype.setPrice = function(value) {
+  jspb.Message.setProto3IntField(this, 3, value);
 };
 
 

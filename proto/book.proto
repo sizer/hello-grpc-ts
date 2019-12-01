@@ -15,4 +15,5 @@ message GetBookResponse {
 message Book {
   string title = 1;
   string author = 2;
+  int32 price = 3;
 }
